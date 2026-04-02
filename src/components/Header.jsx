@@ -2,11 +2,11 @@ import { Link } from "react-router-dom"
 
 function Header () {
     return(
-        <header className="shadow">
+        <header className="shadow bg-light">
             <div className="flex justify-between p-5  xl:mx-[5%] 2xl:mx-[10%]">
                 <Link className="flex justify-center items-center gap-3">
                     <img src="/book.png" alt="book icon" className="w-11 hidden sm:block"/>
-                    <span className="text-principal font-bold text-lg" >BookFinder</span>
+                    <h1 className="text-principal font-bold text-lg" >BookFinder</h1>
                     <img src="/stack-of-books.png" alt="stack of books icon" className="w-10 h-10"/>
                 </Link>
                 <div className="flex justify-between gap-10">
