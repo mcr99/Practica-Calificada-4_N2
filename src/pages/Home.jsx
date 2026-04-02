@@ -1,11 +1,12 @@
+import MyFavorites from "../components/MyFavorites"
 import SearchBar from "../components/SearchBar"
 
 function Home (){
     return(
         <>
         <SearchBar/>
-        <main className="p-5 xl:mx-[5%] 2xl:mx-[10%]">
-            <div className="flex justify-between items-center sm:p-10">
+        <main className="p-5 sm:p-10 xl:mx-[5%] 2xl:mx-[10%]">
+            <div className="flex justify-between items-center sm:py-10">
                 <h2 className="font-bold text-lg">Recommended for you</h2>
                 <p className="text-principal font-semibold text-sm sm:hidden">View all</p>
                 <label className="hidden sm:flex gap-2">
@@ -15,7 +16,7 @@ function Home (){
                         </select>
                 </label>
             </div>
-            <section className="mt-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+            <section className="mt-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 sm:gap-10">
                 {/*#################################*/ }
                 <article className=" rounded-2xl shadow-md overflow-hidden relative flex flex-col">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-9 absolute top-2.5 right-2.5 bg-light rounded-full p-1.5 fill-dark/30">
@@ -103,6 +104,7 @@ function Home (){
                     </div>
                 </article>
             </section>
+            <MyFavorites/>
         </main>
         </>
     )
