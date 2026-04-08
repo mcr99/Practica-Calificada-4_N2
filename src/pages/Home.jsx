@@ -1,3 +1,4 @@
+import { useState } from "react"
 import ErrorWindow from "../components/ErrorWindow"
 import LoadingSpinner from "../components/LoadingSpinner"
 import MyFavorites from "../components/MyFavorites"
@@ -7,7 +8,8 @@ import useFetch from "../hooks/useFetch"
 
 
 function Home (){
-    const {data, error, loading} = useFetch(`https://openlibrary.org/search.json?q=hello&limit=20`)
+    const [query, setQuery] = useState("hola")
+    const {data, error, loading} = useFetch(`https://openlibrary.org/search.json?q=${query}&limit=20`)
     if(loading){
         return(
             <LoadingSpinner/>
@@ -21,7 +23,7 @@ function Home (){
 
     return(
         <>
-        <SearchBar/>
+        <SearchBar onSearch={(finish) => setQuery(finish)}/>
         <main className="p-5 sm:p-10 xl:mx-[5%] 2xl:mx-[10%]">
             <div className="flex justify-between items-center sm:py-10">
                 <h2 className="font-bold text-lg">Recommended for you</h2>
@@ -39,7 +41,7 @@ function Home (){
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-9 absolute top-2.5 right-2.5 bg-light rounded-full p-1.5 fill-dark/30">
                         <path d="M11.8227 4.77222C9.5756 2.52515 5.93237 2.52515 3.6853 4.77222C1.43823 7.01929 1.43823 10.6625 3.6853 12.9096L10.409 19.6334C11.2877 20.5121 12.7123 20.5121 13.591 19.6334L20.3147 12.9097C22.5618 10.6626 22.5618 7.01939 20.3147 4.77232C18.0676 2.52525 14.4244 2.52525 12.1773 4.77232L12 4.94959L11.8227 4.77222Z"/>
                     </svg>
-                    <img src={book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : "photo.png"} alt={book.cover_i ? book.title : "not image found"} loading="lazy"/>
+                    <img src={book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : "photo.png"} alt={book.cover_i ? book.title : "not image found"} loading="lazy" className="w-full h-100 object-cover"/>
                     <h3 className="font-bold mx-5 mt-3">{book.title}</h3>
                     <p className="text-sm mx-5 text-dark/60 font-semibold">{book.author_name}</p>
                     <div className="flex justify-between items-center px-5 py-2">
